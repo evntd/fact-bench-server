@@ -21,9 +21,9 @@ COPY priv priv
 RUN mix release
 
 # Runtime stage
-FROM alpine:3.20
+FROM alpine:3.22
 
-RUN apk add --no-cache libstdc++ ncurses-libs
+RUN apk add --no-cache libstdc++ ncurses-libs openssl
 
 WORKDIR /app
 COPY --from=build /app/_build/prod/rel/fact_bench_server ./
