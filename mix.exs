@@ -4,7 +4,7 @@ defmodule FactBenchServer.MixProject do
   def project do
     [
       app: :fact_bench_server,
-      version: "0.3.1",
+      version: "0.4.1",
       elixir: "~> 1.15",
       start_permanent: Mix.env() == :prod,
       deps: deps()
@@ -20,7 +20,7 @@ defmodule FactBenchServer.MixProject do
 
   defp deps do
     [
-      {:fact, "~> 0.3.1"},
+      {:fact, "~> 0.4.1"},
       {:grpc, "~> 0.9"},
       {:protobuf, "~> 0.13"},
       {:jason, "~> 1.4"}
