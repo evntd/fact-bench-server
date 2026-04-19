@@ -25,8 +25,14 @@ FROM alpine:3.22
 
 RUN apk add --no-cache libstdc++ ncurses-libs openssl
 
+RUN addgroup -g 1000 app && adduser -D -u 1000 -G app app
+
 WORKDIR /app
-COPY --from=build /app/_build/prod/rel/fact_bench_server ./
+COPY --from=build --chown=app:app /app/_build/prod/rel/fact_bench_server ./
+
+RUN mkdir -p /data/benchmark && chown -R app:app /data
+
+USER app
 
 ENV FACT_DB_PATH=/data/benchmark
 EXPOSE 4000/tcp
