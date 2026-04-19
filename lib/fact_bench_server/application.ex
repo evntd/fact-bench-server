@@ -35,8 +35,8 @@ defmodule FactBenchServer.Application do
       alias Fact.Genesis.TheCreator
 
       command = %CreateDatabase.V1{args: [path: db_path]}
-      {:ok, [event]} = Decider.decide(Decider.initial_state(), command)
-      TheCreator.let_there_be_light(event)
+      {:ok, [event], encryption_meta} = Decider.decide(Decider.initial_state(), command)
+      TheCreator.let_there_be_light(event, encryption_meta)
     end
   end
 end
